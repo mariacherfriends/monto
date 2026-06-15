@@ -2,7 +2,12 @@ import { useEffect, useRef } from "react";
 import svgPaths from "../../imports/Home/svg-zevszm6b6p";
 import imgHeader from "../../imports/Home/91d70f44f7cb674d5dcd0075ff563b284adfdcb3.png";
 import imgImg3 from "../../imports/Home/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
+import originImg from "../../imports/origin_monto.jpg";
+import qualityImg from "../../imports/haende_monto.jpg";
+import balanceImg from "../../imports/Home/d0e3502ca8c5c6d3b36afc91a3644da3d8ad70af.png";
 import { useLanguage } from "../LanguageContext";
+
+const featureImages = [originImg, qualityImg, balanceImg];
 
 const TICKER_COPIES = 14;
 
@@ -289,7 +294,7 @@ export function HomeWithContent() {
           {/* Origin */}
           <div className="absolute content-stretch flex gap-[64px] inset-[0_38.25%_73.12%_0] items-center">
             <div className="relative shrink-0 size-[376px] rounded-full overflow-hidden">
-              <img alt={features[0].title} className="absolute block inset-0 max-w-none size-full object-cover" src={features[0].image} />
+              <img alt={features[0].title} className="absolute block inset-0 max-w-none size-full object-cover" src={featureImages[0]} />
             </div>
             <FeatureText title={features[0].title} body={features[0].body} />
           </div>
@@ -298,14 +303,14 @@ export function HomeWithContent() {
           <div className="absolute content-stretch flex gap-[64px] inset-[30.88%_0_31.02%_28.44%] items-center">
             <FeatureText title={features[1].title} body={features[1].body} align="right" />
             <div className="relative shrink-0 size-[533px] rounded-full overflow-hidden">
-              <img alt={features[1].title} className="absolute block inset-0 max-w-none size-full object-cover" src={features[1].image} />
+              <img alt={features[1].title} className="absolute block inset-0 max-w-none size-full object-cover" src={featureImages[1]} />
             </div>
           </div>
 
           {/* Balance */}
           <div className="absolute content-stretch flex gap-[64px] inset-[74.91%_14.31%_0_25.5%] items-center">
             <div className="relative shrink-0 size-[351px]">
-              <img alt={features[2].title} className="absolute block inset-0 max-w-none size-full object-cover" src={features[2].image} />
+              <img alt={features[2].title} className="absolute block inset-0 max-w-none size-full object-cover" src={featureImages[2]} />
             </div>
             <FeatureText title={features[2].title} body={features[2].body} />
           </div>

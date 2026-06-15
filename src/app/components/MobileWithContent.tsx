@@ -2,7 +2,11 @@ import { useEffect, useRef } from "react";
 import svgPaths from "../../imports/HomeMobile-1/svg-19oeng0tbi";
 import imgHeader from "../../imports/HomeMobile-1/91d70f44f7cb674d5dcd0075ff563b284adfdcb3.png";
 import imgImg2 from "../../imports/HomeMobile-1/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
+import mobileOriginImg from "../../imports/origin_monto.jpg";
+import mobileQualityImg from "../../imports/haende_monto.jpg";
 import { useLanguage } from "../LanguageContext";
+
+const mobileFeatureImages = [mobileOriginImg, mobileQualityImg, mobileOriginImg];
 
 const TICKER_COPIES = 8;
 
@@ -259,9 +263,9 @@ export function MobileWithContent() {
 
         {/* 4 · Feature blocks */}
         <div className="content-stretch flex flex-col gap-[72px] items-start px-[16px] relative shrink-0 w-[395px]">
-          <FeatureBlockLeft  title={features[0].title} body={features[0].body} mobileImage={features[0].mobileImage} />
-          <FeatureBlockRight title={features[1].title} body={features[1].body} mobileImage={features[1].mobileImage} />
-          <FeatureBlockLeft  title={features[2].title} body={features[2].body} mobileImage={features[2].mobileImage} />
+          <FeatureBlockLeft  title={features[0].title} body={features[0].body} mobileImage={mobileFeatureImages[0]} />
+          <FeatureBlockRight title={features[1].title} body={features[1].body} mobileImage={mobileFeatureImages[1]} />
+          <FeatureBlockLeft  title={features[2].title} body={features[2].body} mobileImage={mobileFeatureImages[2]} />
         </div>
 
         {/* 5 · Products (gray bg) */}

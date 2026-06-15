@@ -1,23 +1,8 @@
-import originImg    from "../imports/origin_monto.jpg";
-import qualityImg   from "../imports/haende_monto.jpg";
-import balanceImg   from "../imports/Home/d0e3502ca8c5c6d3b36afc91a3644da3d8ad70af.png";
-import mobileOriginImg  from "../imports/origin_monto.jpg";
-import mobileQualityImg from "../imports/haende_monto.jpg";
-
 export type Language = "en" | "de";
-
-const shared = {
-  ticker: "PURITY BORN ABOVE GURGL",
-  featureImages: [
-    { image: originImg,  mobileImage: mobileOriginImg },
-    { image: qualityImg, mobileImage: mobileQualityImg },
-    { image: balanceImg, mobileImage: mobileOriginImg },
-  ],
-};
 
 export const translations = {
   en: {
-    ticker: shared.ticker,
+    ticker: "PURITY BORN ABOVE GURGL",
     headline1: {
       eyebrow: "What Matters Most Is Near",
       title: "A Water in Perfect Natural Harmony",
@@ -41,17 +26,14 @@ export const translations = {
       {
         title: "Origin",
         body: "High in the Gurgl Mountains of the Ötztal Alps, at elevations exceeding 3,000 metres, Mont.O begins its journey. Naturally filtered through ancient Alpine rock, it acquires the clarity, purity and balance that define its exceptional character.",
-        ...shared.featureImages[0],
       },
       {
         title: "Quality",
         body: "True quality reveals itself in balance. With its smooth texture and clean finish, Mont.O complements rather than competes, enhancing flavours without overshadowing them. An ideal companion to fine cuisine and exceptional wines.",
-        ...shared.featureImages[1],
       },
       {
         title: "Balance",
         body: "Composition is a matter of balance. Carefully measured carbonation enhances freshness and texture without overwhelming the palate, creating a refined and harmonious drinking experience.",
-        ...shared.featureImages[2],
       },
     ],
     headline2: {
@@ -74,13 +56,12 @@ export const translations = {
     },
     footer: {
       address: "Mont.O embodies everything Gurgler Wasser stands for. Created exclusively for exceptional moments.",
-      // "Deutsch" is shown in English mode so the user can switch to German
       nav: ["Deutsch", "Datenschutz", "Impressum"],
     },
   },
 
   de: {
-    ticker: shared.ticker,
+    ticker: "PURITY BORN ABOVE GURGL",
     headline1: {
       eyebrow: "Was am meisten zählt, liegt nah",
       title: "Ein Wasser in perfekter natürlicher Harmonie",
@@ -104,17 +85,14 @@ export const translations = {
       {
         title: "Ursprung",
         body: "Hoch in den Gurgler Bergen der Ötztaler Alpen, auf Höhen von über 3.000 Metern, beginnt Mont.Os Reise. Natürlich durch altes Alpengestein gefiltert, nimmt es die Klarheit, Reinheit und Balance an, die seinen außergewöhnlichen Charakter ausmachen.",
-        ...shared.featureImages[0],
       },
       {
         title: "Qualität",
         body: "Wahre Qualität zeigt sich in der Balance. Mit weicher Textur und sauberem Abgang ergänzt Mont.O, statt zu konkurrieren – es betont Aromen, ohne sie zu überlagern. Ein idealer Begleiter zu feiner Küche und außergewöhnlichen Weinen.",
-        ...shared.featureImages[1],
       },
       {
         title: "Ausgewogenheit",
         body: "Komposition ist eine Frage der Balance. Sorgfältig abgestimmte Kohlensäure betont Frische und Textur, ohne den Gaumen zu überwältigen – ein verfeinertes und harmonisches Trinkerlebnis.",
-        ...shared.featureImages[2],
       },
     ],
     headline2: {
@@ -137,7 +115,6 @@ export const translations = {
     },
     footer: {
       address: "Mont.O verkörpert alles, wofür Gurgler Wasser steht. Exklusiv für außergewöhnliche Momente geschaffen.",
-      // "English" is shown in German mode so the user can switch to English
       nav: ["English", "Datenschutz", "Impressum"],
     },
   },
