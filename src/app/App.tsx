@@ -33,23 +33,35 @@ const styles = `
   }
 
   /* ── Ticker animation ── */
-  /* Desktop: 14 copies → move exactly 1/14 of total width = 1 copy = seamless */
+  @-webkit-keyframes monto-ticker-desktop {
+    from { -webkit-transform: translateX(0); transform: translateX(0); }
+    to   { -webkit-transform: translateX(calc(-100% / 14)); transform: translateX(calc(-100% / 14)); }
+  }
   @keyframes monto-ticker-desktop {
     from { transform: translateX(0); }
     to   { transform: translateX(calc(-100% / 14)); }
   }
-  /* Mobile: 8 copies → move exactly 1/8 of total width = 1 copy = seamless */
+  @-webkit-keyframes monto-ticker-mobile {
+    from { -webkit-transform: translateX(0); transform: translateX(0); }
+    to   { -webkit-transform: translateX(calc(-100% / 8)); transform: translateX(calc(-100% / 8)); }
+  }
   @keyframes monto-ticker-mobile {
     from { transform: translateX(0); }
     to   { transform: translateX(calc(-100% / 8)); }
   }
   [data-name="font"] [data-name="slider"] {
+    -webkit-animation: monto-ticker-desktop 22s linear infinite;
     animation: monto-ticker-desktop 22s linear infinite;
     will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   [data-name="Font Mobile"] [data-name="slider"] {
+    -webkit-animation: monto-ticker-mobile 18s linear infinite;
     animation: monto-ticker-mobile 18s linear infinite;
     will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   /* Ticker strip: Chrome/Safari use text-box-trim so no override needed.
      Firefox doesn't support text-box-trim, so we force the height there only. */
