@@ -10,7 +10,7 @@ function Ticker() {
   return (
     <div
       data-name="slider"
-      className="absolute left-0 top-0 flex gap-[80px] items-center whitespace-nowrap font-['Waverly_CF:Extra_Bold',sans-serif] text-[#8d8e8e] text-[18px] tracking-[2.7px] uppercase not-italic leading-[normal]"
+      className="flex gap-[80px] items-center whitespace-nowrap font-['Waverly_CF:Extra_Bold',sans-serif] text-[#8d8e8e] text-[18px] tracking-[2.7px] uppercase not-italic leading-[normal]"
     >
       {Array(TICKER_COPIES).fill(null).map((_, i) => (
         <p key={i} className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0">
