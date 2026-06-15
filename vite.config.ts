@@ -6,12 +6,12 @@ import react from '@vitejs/plugin-react'
 // Stub out Figma-specific virtual modules so the build works outside Make
 const figmaStubPlugin = {
   name: 'figma-stub',
-  resolveId(id: string) {
+  resolveId(id) {
     if (id === 'figma:foundry-client-api') return '\0figma-stub'
-    if (id.startsWith('figma:asset/')) return '\0figma-asset:' + id.slice('figma:asset/'.length)
+    if (id.startsWith('figma:asset/')) return '\0figma-asset:' + id.slice(12)
     return null
   },
-  load(id: string) {
+  load(id) {
     if (id === '\0figma-stub') return 'export default {}'
     if (id.startsWith('\0figma-asset:')) return 'export default ""'
     return null
