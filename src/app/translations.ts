@@ -102,7 +102,7 @@ export const translations = {
     products: [
       {
         title: "Prickelnd",
-        body: "Mont.O Perlend verbindet außergewöhnliche Reinheit mit einem fein abgestimmten Kohlensäuregehalt. Feine Perlen bringen Frische und Lebendigkeit, ohne den weichen, eleganten Charakter zu verlieren.",
+        body: "Mont.O Prickelnd verbindet außergewöhnliche Reinheit mit einem fein abgestimmten Kohlensäuregehalt. Feine Perlen bringen Frische und Lebendigkeit, ohne den weichen, eleganten Charakter zu verlieren.",
       },
       {
         title: "Still",
@@ -111,7 +111,7 @@ export const translations = {
     ],
     headline3: {
       eyebrow: "ERLEBEN SIE ES AUS ERSTER HAND",
-      title: "Exklusiv. Unverwechselbar. Echt. Mont.O.",
+      title: "Exklusiv. Echt. Mont.O.",
     },
     footer: {
       address: "Mont.O verkörpert alles, wofür Gurgler Wasser steht. Exklusiv für außergewöhnliche Momente geschaffen.",
