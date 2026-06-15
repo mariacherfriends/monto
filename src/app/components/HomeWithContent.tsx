@@ -21,10 +21,11 @@ function Ticker() {
   return (
     <div
       data-name="slider"
-      className="flex gap-[80px] items-start whitespace-nowrap font-['Waverly_CF:Extra_Bold',sans-serif] text-[#8d8e8e] text-[20px] tracking-[3px] uppercase not-italic leading-[normal]"
+      className="flex gap-[80px] whitespace-nowrap font-['Waverly_CF:Extra_Bold',sans-serif] text-[#8d8e8e] text-[20px] tracking-[3px] uppercase not-italic"
+      style={{ lineHeight: '14px', height: '14px', overflow: 'hidden', alignItems: 'flex-start' }}
     >
       {Array(TICKER_COPIES).fill(null).map((_, i) => (
-        <p key={i} className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0">
+        <p key={i} className="relative shrink-0" style={{ lineHeight: '14px', overflow: 'hidden', height: '14px' }}>
           {content.ticker}
         </p>
       ))}
