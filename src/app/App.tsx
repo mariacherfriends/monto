@@ -132,7 +132,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <LanguageProvider>
       <style>{styles}</style>
       {isMobile ? (
         <ScaledLayout designWidth={MOBILE_WIDTH}>
