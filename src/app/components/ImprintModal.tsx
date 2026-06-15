@@ -1,5 +1,7 @@
+import { createPortal } from "react-dom";
+
 export function ImprintModal({ onClose }: { onClose: () => void }) {
-  return (
+  return createPortal(
     <div
       onClick={onClose}
       style={{
@@ -53,14 +55,7 @@ export function ImprintModal({ onClose }: { onClose: () => void }) {
         </button>
 
         {/* Eyebrow */}
-        <p style={{
-          marginBottom: "48px",
-          fontWeight: 600,
-          fontSize: "12px",
-          letterSpacing: "3px",
-          textTransform: "uppercase",
-          color: "#8d8e8e",
-        }}>
+        <p style={{ marginBottom: "48px", fontWeight: 600, fontSize: "12px", letterSpacing: "3px", textTransform: "uppercase", color: "#8d8e8e" }}>
           Imprint &amp; Privacy
         </p>
 
@@ -72,10 +67,7 @@ export function ImprintModal({ onClose }: { onClose: () => void }) {
           Steiner Hotelbetriebe GmbH &amp; Co KG<br />
           Kressbrunnenweg 3<br />
           A-6456 Obergurgl<br />
-          <a
-            href="mailto:info@austria-bellevue.com"
-            style={{ color: "#020a0a", textDecoration: "underline" }}
-          >
+          <a href="mailto:info@austria-bellevue.com" style={{ color: "#020a0a", textDecoration: "underline" }}>
             info@austria-bellevue.com
           </a>
         </p>
@@ -83,12 +75,7 @@ export function ImprintModal({ onClose }: { onClose: () => void }) {
         {/* Privacy */}
         <p style={{ marginBottom: "48px", fontSize: "18px" }}>
           Please find our data privacy policy{" "}
-          <a
-            href="https://austria-bellevue.com/austria/en/privacy/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#020a0a", textDecoration: "underline" }}
-          >
+          <a href="https://austria-bellevue.com/austria/en/privacy/" target="_blank" rel="noopener noreferrer" style={{ color: "#020a0a", textDecoration: "underline" }}>
             here
           </a>
           .
@@ -100,16 +87,12 @@ export function ImprintModal({ onClose }: { onClose: () => void }) {
         </p>
         <p style={{ fontSize: "18px" }}>
           Mariacher and friends Werbeagentur<br />
-          <a
-            href="https://mariacher.at"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#020a0a", textDecoration: "underline" }}
-          >
+          <a href="https://mariacher.at" target="_blank" rel="noopener noreferrer" style={{ color: "#020a0a", textDecoration: "underline" }}>
             mariacher.at
           </a>
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
