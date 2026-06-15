@@ -2,12 +2,12 @@ import { useEffect, useRef } from "react";
 import svgPaths from "../../imports/HomeMobile-1/svg-19oeng0tbi";
 import imgHeader from "../../imports/HomeMobile-1/91d70f44f7cb674d5dcd0075ff563b284adfdcb3.png";
 import imgImg2 from "../../imports/HomeMobile-1/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
-import { content } from "../content";
+import { useLanguage } from "../LanguageContext";
 
 const TICKER_COPIES = 8;
 
 // ── Ticker ─────────────────────────────────────────────────────────────────
-function Ticker() {
+function Ticker({ text }: { text: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function Ticker() {
     >
       {Array(TICKER_COPIES).fill(null).map((_, i) => (
         <p key={i} className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0">
-          {content.ticker}
+          {text}
         </p>
       ))}
     </div>
@@ -166,7 +166,8 @@ function ProductCard({ title, body }: { title: string; body: string }) {
 
 // ── Root component ─────────────────────────────────────────────────────────
 export function MobileWithContent() {
-  const { headline1, quote, qualities, features, headline2, products, headline3, footer } = content;
+  const { content, toggle } = useLanguage();
+  const { ticker, headline1, quote, qualities, features, headline2, products, headline3, footer } = content;
 
   return (
     <div className="bg-white relative size-full" data-name="Home Mobile">
@@ -196,7 +197,7 @@ export function MobileWithContent() {
           className="absolute left-0 right-0"
           style={{ top: '32px', height: '14px', maxHeight: '14px' }}
         >
-          <Ticker />
+          <Ticker text={ticker} />
         </div>
 
         {/* MONTO logo — 118px from top */}
@@ -253,7 +254,7 @@ export function MobileWithContent() {
           className="relative shrink-0 w-full"
           style={{ height: '14px', maxHeight: '14px' }}
         >
-          <Ticker />
+          <Ticker text={ticker} />
         </div>
 
         {/* 4 · Feature blocks */}
@@ -320,14 +321,21 @@ export function MobileWithContent() {
             </p>
             {/* Nav */}
             <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-center justify-center leading-[1.6] not-italic relative shrink-0 text-[#020a0a] text-[18px] text-center w-full">
-              {footer.nav.map((item, i) => (
-                <p
-                  key={item}
-                  className={`[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full ${i === 0 ? "font-['Inter_Tight:SemiBold',sans-serif]" : "font-['Inter_Tight:Light',sans-serif]"}`}
-                >
-                  {item}
-                </p>
-              ))}
+              {footer.nav.map((item, i) =>
+                i === 0 ? (
+                  <button
+                    key={item}
+                    onClick={toggle}
+                    className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:SemiBold',sans-serif] bg-transparent border-none cursor-pointer text-[18px] text-[#020a0a] leading-[1.6] p-0"
+                  >
+                    {item}
+                  </button>
+                ) : (
+                  <p key={item} className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:Light',sans-serif]">
+                    {item}
+                  </p>
+                )
+              )}
             </div>
           </div>
         </div>

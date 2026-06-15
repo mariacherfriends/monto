@@ -143,6 +143,6 @@ export default function App() {
           <HomeWithContent />
         </ScaledLayout>
       )}
-    </>
+    </LanguageProvider>
   );
 }

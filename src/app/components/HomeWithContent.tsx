@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import svgPaths from "../../imports/Home/svg-zevszm6b6p";
 import imgHeader from "../../imports/Home/91d70f44f7cb674d5dcd0075ff563b284adfdcb3.png";
 import imgImg3 from "../../imports/Home/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
-import { content } from "../content";
+import { useLanguage } from "../LanguageContext";
 
 const TICKER_COPIES = 14;
 
@@ -18,7 +18,7 @@ function OIcon() {
 }
 
 // ── Scrolling ticker row ───────────────────────────────────────────────────
-function Ticker() {
+function Ticker({ text }: { text: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,7 +27,6 @@ function Ticker() {
     let pos = 0;
     let lastTime: number | null = null;
     let frame: number;
-    // ~30px/s in design space matches the original 22s CSS animation feel
     const speed = 30;
 
     function tick(now: number) {
@@ -52,7 +51,7 @@ function Ticker() {
     >
       {Array(TICKER_COPIES).fill(null).map((_, i) => (
         <p key={i} className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0">
-          {content.ticker}
+          {text}
         </p>
       ))}
     </div>
@@ -176,7 +175,8 @@ function ProductCard({ title, body, marginLeft = 0 }: ProductCardProps) {
 
 // ── Root component ─────────────────────────────────────────────────────────
 export function HomeWithContent() {
-  const { headline1, quote, qualities, features, headline2, products, headline3, footer } = content;
+  const { content, toggle } = useLanguage();
+  const { ticker, headline1, quote, qualities, features, headline2, products, headline3, footer } = content;
 
   return (
     <div className="bg-white relative size-full" data-name="Home">
@@ -212,7 +212,7 @@ export function HomeWithContent() {
           className="absolute left-0 right-0"
           style={{ top: '60px', height: '14px', maxHeight: '14px' }}
         >
-          <Ticker />
+          <Ticker text={ticker} />
         </div>
 
         {/* Down arrow */}
@@ -269,7 +269,7 @@ export function HomeWithContent() {
           className="relative shrink-0 w-full"
           style={{ height: '14px', maxHeight: '14px' }}
         >
-          <Ticker />
+          <Ticker text={ticker} />
         </div>
 
         {/* 4 · Feature image+text blocks */}
@@ -366,14 +366,21 @@ export function HomeWithContent() {
             className="-translate-y-1/2 [word-break:break-word] absolute content-stretch flex flex-col gap-[24px] items-center justify-center leading-[1.6] not-italic right-[162px] text-[#020a0a] text-[18px] text-center top-[calc(50%+0.5px)] w-[376px]"
             data-name="list"
           >
-            {footer.nav.map((item, i) => (
-              <p
-                key={item}
-                className={`[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full ${i === 0 ? "font-['Inter_Tight:SemiBold',sans-serif]" : "font-['Inter_Tight:Light',sans-serif]"}`}
-              >
-                {item}
-              </p>
-            ))}
+            {footer.nav.map((item, i) =>
+              i === 0 ? (
+                <button
+                  key={item}
+                  onClick={toggle}
+                  className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:SemiBold',sans-serif] bg-transparent border-none cursor-pointer text-[18px] text-[#020a0a] leading-[1.6] p-0"
+                >
+                  {item}
+                </button>
+              ) : (
+                <p key={item} className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:Light',sans-serif]">
+                  {item}
+                </p>
+              )
+            )}
           </div>
 
           {/* MONTO logo */}
