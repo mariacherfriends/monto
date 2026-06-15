@@ -10,21 +10,23 @@ export function ImprintModal({ onClose }: { onClose: () => void }) {
         alignItems: "center",
         justifyContent: "center",
         zIndex: 99999,
+        padding: "24px",
       }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
           background: "#fff",
-          maxWidth: "520px",
-          width: "90%",
-          padding: "48px",
+          width: "min(860px, 100%)",
+          minHeight: "400px",
+          padding: "80px 100px",
           position: "relative",
           fontFamily: "inter-tight-variable, sans-serif",
           fontWeight: 300,
           color: "#020a0a",
-          lineHeight: 1.7,
-          fontSize: "16px",
+          lineHeight: 1.8,
+          fontSize: "18px",
+          boxSizing: "border-box",
         }}
       >
         {/* Close button */}
@@ -32,36 +34,51 @@ export function ImprintModal({ onClose }: { onClose: () => void }) {
           onClick={onClose}
           style={{
             position: "absolute",
-            top: "20px",
-            right: "20px",
+            top: "32px",
+            right: "40px",
             background: "none",
             border: "none",
             cursor: "pointer",
-            fontSize: "22px",
+            fontSize: "28px",
             color: "#020a0a",
             lineHeight: 1,
+            fontWeight: 300,
           }}
           aria-label="Close"
         >
           ×
         </button>
 
-        <p style={{ marginBottom: "24px", fontWeight: 400, fontSize: "13px", letterSpacing: "2px", textTransform: "uppercase", color: "#8d8e8e" }}>
+        {/* Eyebrow */}
+        <p style={{
+          marginBottom: "40px",
+          fontWeight: 600,
+          fontSize: "12px",
+          letterSpacing: "3px",
+          textTransform: "uppercase",
+          color: "#8d8e8e",
+        }}>
           Imprint &amp; Privacy
         </p>
 
-        <p style={{ marginBottom: "8px", fontWeight: 400 }}>Responsible for the content:</p>
+        {/* Content */}
+        <p style={{ marginBottom: "12px", fontWeight: 400, fontSize: "18px" }}>
+          Responsible for the content:
+        </p>
 
-        <p style={{ marginBottom: "24px" }}>
+        <p style={{ marginBottom: "40px", fontSize: "18px" }}>
           Steiner Hotelbetriebe GmbH &amp; Co KG<br />
           Kressbrunnenweg 3<br />
           A-6456 Obergurgl<br />
-          <a href="mailto:info@austria-bellevue.com" style={{ color: "#020a0a" }}>
+          <a
+            href="mailto:info@austria-bellevue.com"
+            style={{ color: "#020a0a", textDecoration: "underline" }}
+          >
             info@austria-bellevue.com
           </a>
         </p>
 
-        <p>
+        <p style={{ fontSize: "18px" }}>
           Please find our data privacy policy{" "}
           <a
             href="https://austria-bellevue.com/austria/en/privacy/"
