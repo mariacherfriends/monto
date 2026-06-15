@@ -167,7 +167,7 @@ export function MobileWithContent() {
         {/* Ticker strip — 32px from top of header */}
         <div
           data-name="Font Mobile"
-          className="absolute left-0 right-0 overflow-hidden"
+          className="absolute left-0 right-0"
           style={{ top: '32px', height: '14px', maxHeight: '14px' }}
         >
           <Ticker />
@@ -224,7 +224,7 @@ export function MobileWithContent() {
         {/* 3 · Mid-page ticker */}
         <div
           data-name="Font Mobile"
-          className="relative shrink-0 w-full overflow-hidden"
+          className="relative shrink-0 w-full"
           style={{ height: '14px', maxHeight: '14px' }}
         >
           <Ticker />

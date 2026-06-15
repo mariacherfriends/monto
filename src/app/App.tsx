@@ -53,21 +53,17 @@ const styles = `
     -webkit-animation: monto-ticker-desktop 22s linear infinite;
     animation: monto-ticker-desktop 22s linear infinite;
     will-change: transform;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
   }
   [data-name="Font Mobile"] [data-name="slider"] {
     -webkit-animation: monto-ticker-mobile 18s linear infinite;
     animation: monto-ticker-mobile 18s linear infinite;
     will-change: transform;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
   }
-  /* Ticker strip: Chrome/Safari use text-box-trim so no override needed.
-     Firefox doesn't support text-box-trim, so we force the height there only. */
+  /* Use clip-path (not overflow:hidden) so iOS Safari child animations are not blocked */
   [data-name="font"],
   [data-name="Font Mobile"] {
-    overflow: hidden !important;
+    -webkit-clip-path: inset(0);
+    clip-path: inset(0);
   }
 
   @supports (-moz-appearance: none) {
