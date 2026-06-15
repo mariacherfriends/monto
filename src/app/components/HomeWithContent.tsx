@@ -5,7 +5,7 @@ import imgImg3 from "../../imports/Home/43c122a56996b25c1dc2de7820a26e197b5ec98c
 import originImg from "../../imports/origin_monto.jpg";
 import qualityImg from "../../imports/haende_monto.jpg";
 import balanceImg from "../../imports/Home/d0e3502ca8c5c6d3b36afc91a3644da3d8ad70af.png";
-import { useLanguage } from "../LanguageContext";
+import { translations } from "../translations";
 
 const featureImages = [originImg, qualityImg, balanceImg];
 
@@ -179,8 +179,9 @@ function ProductCard({ title, body, marginLeft = 0 }: ProductCardProps) {
 }
 
 // ── Root component ─────────────────────────────────────────────────────────
-export function HomeWithContent() {
-  const { content, toggle } = useLanguage();
+type Content = typeof translations.en;
+
+export function HomeWithContent({ content, onToggle }: { content: Content; onToggle: () => void }) {
   const { ticker, headline1, quote, qualities, features, headline2, products, headline3, footer } = content;
 
   return (
@@ -375,7 +376,7 @@ export function HomeWithContent() {
               i === 0 ? (
                 <button
                   key={item}
-                  onClick={toggle}
+                  onClick={onToggle}
                   className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:SemiBold',sans-serif] bg-transparent border-none cursor-pointer text-[18px] text-[#020a0a] leading-[1.6] p-0"
                 >
                   {item}

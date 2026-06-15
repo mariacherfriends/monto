@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { HomeWithContent } from "./components/HomeWithContent";
 import { MobileWithContent } from "./components/MobileWithContent";
+import { translations } from "./translations";
+import type { Language } from "./translations";
 
 const DESKTOP_WIDTH = 1920;
 const MOBILE_WIDTH = 395;
@@ -122,6 +124,10 @@ function ScaledLayout({
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < MOBILE_BREAKPOINT);
+  const [lang, setLang] = useState<Language>("en");
+
+  const content = translations[lang];
+  const toggle = () => setLang((l) => (l === "en" ? "de" : "en"));
 
   useEffect(() => {
     function onResize() {
@@ -132,17 +138,17 @@ export default function App() {
   }, []);
 
   return (
-    <LanguageProvider>
+    <>
       <style>{styles}</style>
       {isMobile ? (
         <ScaledLayout designWidth={MOBILE_WIDTH}>
-          <MobileWithContent />
+          <MobileWithContent content={content} onToggle={toggle} />
         </ScaledLayout>
       ) : (
         <ScaledLayout designWidth={DESKTOP_WIDTH}>
-          <HomeWithContent />
+          <HomeWithContent content={content} onToggle={toggle} />
         </ScaledLayout>
       )}
-    </LanguageProvider>
+    </>
   );
 }

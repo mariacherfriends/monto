@@ -4,7 +4,7 @@ import imgHeader from "../../imports/HomeMobile-1/91d70f44f7cb674d5dcd0075ff563b
 import imgImg2 from "../../imports/HomeMobile-1/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
 import mobileOriginImg from "../../imports/origin_monto.jpg";
 import mobileQualityImg from "../../imports/haende_monto.jpg";
-import { useLanguage } from "../LanguageContext";
+import { translations } from "../translations";
 
 const mobileFeatureImages = [mobileOriginImg, mobileQualityImg, mobileOriginImg];
 
@@ -169,8 +169,9 @@ function ProductCard({ title, body }: { title: string; body: string }) {
 }
 
 // ── Root component ─────────────────────────────────────────────────────────
-export function MobileWithContent() {
-  const { content, toggle } = useLanguage();
+type Content = typeof translations.en;
+
+export function MobileWithContent({ content, onToggle }: { content: Content; onToggle: () => void }) {
   const { ticker, headline1, quote, qualities, features, headline2, products, headline3, footer } = content;
 
   return (
@@ -329,7 +330,7 @@ export function MobileWithContent() {
                 i === 0 ? (
                   <button
                     key={item}
-                    onClick={toggle}
+                    onClick={onToggle}
                     className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:SemiBold',sans-serif] bg-transparent border-none cursor-pointer text-[18px] text-[#020a0a] leading-[1.6] p-0"
                   >
                     {item}
