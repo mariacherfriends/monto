@@ -33,13 +33,22 @@ const styles = `
   }
 
   /* ── Ticker animation ── */
-  @keyframes monto-ticker {
+  /* Desktop: 14 copies → move exactly 1/14 of total width = 1 copy = seamless */
+  @keyframes monto-ticker-desktop {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-100% / 14)); }
+  }
+  /* Mobile: 8 copies → move exactly 1/8 of total width = 1 copy = seamless */
+  @keyframes monto-ticker-mobile {
     from { transform: translateX(0); }
     to   { transform: translateX(calc(-100% / 8)); }
   }
-  [data-name="font"] [data-name="slider"],
+  [data-name="font"] [data-name="slider"] {
+    animation: monto-ticker-desktop 22s linear infinite;
+    will-change: transform;
+  }
   [data-name="Font Mobile"] [data-name="slider"] {
-    animation: monto-ticker 18s linear infinite;
+    animation: monto-ticker-mobile 18s linear infinite;
     will-change: transform;
   }
 `;
