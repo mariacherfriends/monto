@@ -51,6 +51,12 @@ const styles = `
     animation: monto-ticker-mobile 18s linear infinite;
     will-change: transform;
   }
+  /* clip-path: inset(0) reliably clips absolutely positioned children in
+     all browsers including Firefox, where overflow:hidden can fail */
+  [data-name="font"],
+  [data-name="Font Mobile"] {
+    clip-path: inset(0);
+  }
 `;
 
 function ScaledLayout({
