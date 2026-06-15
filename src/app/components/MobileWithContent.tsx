@@ -5,6 +5,7 @@ import imgHeader from "../../imports/HomeMobile-1/91d70f44f7cb674d5dcd0075ff563b
 import imgImg2 from "../../imports/HomeMobile-1/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
 import mobileOriginImg from "../../imports/origin_monto.jpg";
 import mobileQualityImg from "../../imports/haende_monto.jpg";
+import naturalImg from "../../imports/02-Monto_Flasche_Mock-up_ANSICHT_05_weiss.png";
 import { translations } from "../translations";
 
 const mobileFeatureImages = [mobileOriginImg, mobileQualityImg, mobileOriginImg];
@@ -151,11 +152,11 @@ function FeatureBlockRight({ title, body, mobileImage }: { title: string; body: 
 }
 
 // ── Product card ───────────────────────────────────────────────────────────
-function ProductCard({ title, body }: { title: string; body: string }) {
+function ProductCard({ title, body, image = imgImg2 }: { title: string; body: string; image?: string }) {
   return (
     <div className="content-stretch flex flex-col gap-[32px] items-center relative shrink-0 w-full">
       <div className="relative rounded-[580px] shrink-0 size-[268px]">
-        <img alt={title} className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[580px] size-full" src={imgImg2} />
+        <img alt={title} className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[580px] size-full" src={image} />
       </div>
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[32px] items-start not-italic relative shrink-0 text-[#020a0a] text-center">
         <p className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] font-['Waverly_CF:Extra_Bold',sans-serif] leading-[normal] relative shrink-0 text-[32px] tracking-[4.8px] uppercase w-[363px]">
@@ -278,7 +279,7 @@ export function MobileWithContent({ content, onToggle }: { content: Content; onT
               <MobileHeadline eyebrow={headline2.eyebrow} title={headline2.title} />
             </div>
             <ProductCard title={products[0].title} body={products[0].body} />
-            <ProductCard title={products[1].title} body={products[1].body} />
+            <ProductCard title={products[1].title} body={products[1].body} image={naturalImg} />
           </div>
         </div>
 

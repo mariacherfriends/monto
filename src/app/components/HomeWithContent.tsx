@@ -6,6 +6,7 @@ import imgImg3 from "../../imports/Home/43c122a56996b25c1dc2de7820a26e197b5ec98c
 import originImg from "../../imports/origin_monto.jpg";
 import qualityImg from "../../imports/haende_monto.jpg";
 import balanceImg from "../../imports/Home/d0e3502ca8c5c6d3b36afc91a3644da3d8ad70af.png";
+import naturalImg from "../../imports/02-Monto_Flasche_Mock-up_ANSICHT_05_weiss.png";
 import { translations } from "../translations";
 
 const featureImages = [originImg, qualityImg, balanceImg];
@@ -151,9 +152,10 @@ interface ProductCardProps {
   title: string;
   body: string;
   marginLeft?: number;
+  image?: string;
 }
 
-function ProductCard({ title, body, marginLeft = 0 }: ProductCardProps) {
+function ProductCard({ title, body, marginLeft = 0, image = imgImg3 }: ProductCardProps) {
   return (
     <div
       data-name="product"
@@ -164,7 +166,7 @@ function ProductCard({ title, body, marginLeft = 0 }: ProductCardProps) {
         <img
           alt={title}
           className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[580px] size-full"
-          src={imgImg3}
+          src={image}
         />
       </div>
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[40px] items-start not-italic relative shrink-0 text-[#020a0a] text-center">
@@ -335,7 +337,7 @@ export function HomeWithContent({ content, onToggle }: { content: Content; onTog
             className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0"
             data-name="teaser"
           >
-            <ProductCard title={products[1].title} body={products[1].body} marginLeft={816} />
+            <ProductCard title={products[1].title} body={products[1].body} marginLeft={816} image={naturalImg} />
             <ProductCard title={products[0].title} body={products[0].body} marginLeft={0} />
           </div>
         </div>
