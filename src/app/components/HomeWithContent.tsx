@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ImprintModal } from "./ImprintModal";
 import svgPaths from "../../imports/Home/svg-zevszm6b6p";
 import imgHeader from "../../imports/Home/91d70f44f7cb674d5dcd0075ff563b284adfdcb3.png";
 import imgImg3 from "../../imports/Home/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
@@ -183,6 +184,7 @@ type Content = typeof translations.en;
 
 export function HomeWithContent({ content, onToggle }: { content: Content; onToggle: () => void }) {
   const { ticker, headline1, quote, qualities, features, headline2, products, headline3, footer } = content;
+  const [showImprint, setShowImprint] = useState(false);
 
   return (
     <div className="bg-white relative size-full" data-name="Home">
@@ -372,21 +374,16 @@ export function HomeWithContent({ content, onToggle }: { content: Content; onTog
             className="-translate-y-1/2 [word-break:break-word] absolute content-stretch flex flex-col gap-[24px] items-center justify-center leading-[1.6] not-italic right-[162px] text-[#020a0a] text-[18px] text-center top-[calc(50%+0.5px)] w-[376px]"
             data-name="list"
           >
-            {footer.nav.map((item, i) =>
-              i === 0 ? (
-                <button
-                  key={item}
-                  onClick={onToggle}
-                  className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:SemiBold',sans-serif] bg-transparent border-none cursor-pointer text-[18px] text-[#020a0a] leading-[1.6] p-0"
-                >
-                  {item}
-                </button>
-              ) : (
-                <p key={item} className="[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full font-['Inter_Tight:Light',sans-serif]">
-                  {item}
-                </p>
-              )
-            )}
+            {footer.nav.map((item, i) => (
+              <button
+                key={item}
+                onClick={i === 0 ? onToggle : () => setShowImprint(true)}
+                className={`[text-box-edge:cap_alphabetic] [text-box-trim:trim-both] relative shrink-0 w-full bg-transparent border-none cursor-pointer text-[18px] text-[#020a0a] leading-[1.6] p-0 ${i === 0 ? "font-['Inter_Tight:SemiBold',sans-serif]" : "font-['Inter_Tight:Light',sans-serif]"}`}
+              >
+                {item}
+              </button>
+            ))}
+            {showImprint && <ImprintModal onClose={() => setShowImprint(false)} />}
           </div>
 
           {/* MONTO logo */}

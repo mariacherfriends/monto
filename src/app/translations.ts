@@ -56,7 +56,7 @@ export const translations = {
     },
     footer: {
       address: "Mont.O embodies everything Gurgler Wasser stands for. Created exclusively for exceptional moments.",
-      nav: ["Deutsch", "Datenschutz", "Impressum"],
+      nav: ["Deutsch", "Imprint & Privacy"],
     },
   },
 
@@ -115,7 +115,7 @@ export const translations = {
     },
     footer: {
       address: "Mont.O verkörpert alles, wofür Gurgler Wasser steht. Exklusiv für außergewöhnliche Momente geschaffen.",
-      nav: ["English", "Datenschutz", "Impressum"],
+      nav: ["English", "Imprint & Privacy"],
     },
   },
 };
