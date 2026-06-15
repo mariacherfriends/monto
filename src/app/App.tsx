@@ -51,11 +51,15 @@ const styles = `
     animation: monto-ticker-mobile 18s linear infinite;
     will-change: transform;
   }
-  /* clip-path: inset(0) reliably clips absolutely positioned children in
-     all browsers including Firefox, where overflow:hidden can fail */
+  /* Force ticker containers to exactly 14px in all browsers including Firefox.
+     Firefox ignores overflow:hidden inside transformed ancestors, so we use
+     contain:paint which clips to the border-box at the painting stage. */
   [data-name="font"],
   [data-name="Font Mobile"] {
-    clip-path: inset(0);
+    height: 14px !important;
+    max-height: 14px !important;
+    overflow: hidden !important;
+    contain: paint;
   }
 `;
 
