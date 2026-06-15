@@ -180,7 +180,11 @@ export function HomeWithContent() {
         </div>
 
         {/* Header ticker strip */}
-        <div className="absolute inset-[3.8%_0_95.31%_0] overflow-hidden" data-name="font">
+        <div
+          data-name="font"
+          className="absolute left-0 right-0 overflow-hidden"
+          style={{ top: '60px', height: '14px', maxHeight: '14px' }}
+        >
           <Ticker />
         </div>
 
@@ -233,7 +237,11 @@ export function HomeWithContent() {
         </div>
 
         {/* 3 · Mid-page ticker strip */}
-        <div className="h-[14px] overflow-hidden relative shrink-0 w-full" data-name="font">
+        <div
+          data-name="font"
+          className="relative shrink-0 w-full overflow-hidden"
+          style={{ height: '14px', maxHeight: '14px' }}
+        >
           <Ticker />
         </div>
 
