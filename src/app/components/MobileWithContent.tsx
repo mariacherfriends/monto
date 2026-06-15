@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import svgPaths from "../../imports/HomeMobile-1/svg-19oeng0tbi";
 import imgHeader from "../../imports/HomeMobile-1/91d70f44f7cb674d5dcd0075ff563b284adfdcb3.png";
 import imgImg2 from "../../imports/HomeMobile-1/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
@@ -7,8 +8,33 @@ const TICKER_COPIES = 8;
 
 // ── Ticker ─────────────────────────────────────────────────────────────────
 function Ticker() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let pos = 0;
+    let lastTime: number | null = null;
+    let frame: number;
+    const speed = 30;
+
+    function tick(now: number) {
+      if (lastTime !== null) {
+        pos -= speed * ((now - lastTime) / 1000);
+        const step = el.scrollWidth / TICKER_COPIES;
+        if (pos <= -step) pos += step;
+        el.style.transform = `translateX(${pos}px)`;
+      }
+      lastTime = now;
+      frame = requestAnimationFrame(tick);
+    }
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <div
+      ref={ref}
       data-name="slider"
       className="flex gap-[80px] whitespace-nowrap font-['Waverly_CF:Extra_Bold',sans-serif] text-[#8d8e8e] text-[18px] tracking-[2.7px] uppercase not-italic"
     >

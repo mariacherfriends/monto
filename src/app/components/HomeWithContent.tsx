@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import svgPaths from "../../imports/Home/svg-zevszm6b6p";
 import imgHeader from "../../imports/Home/91d70f44f7cb674d5dcd0075ff563b284adfdcb3.png";
 import imgImg3 from "../../imports/Home/43c122a56996b25c1dc2de7820a26e197b5ec98c.png";
@@ -18,8 +19,34 @@ function OIcon() {
 
 // ── Scrolling ticker row ───────────────────────────────────────────────────
 function Ticker() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let pos = 0;
+    let lastTime: number | null = null;
+    let frame: number;
+    // ~30px/s in design space matches the original 22s CSS animation feel
+    const speed = 30;
+
+    function tick(now: number) {
+      if (lastTime !== null) {
+        pos -= speed * ((now - lastTime) / 1000);
+        const step = el.scrollWidth / TICKER_COPIES;
+        if (pos <= -step) pos += step;
+        el.style.transform = `translateX(${pos}px)`;
+      }
+      lastTime = now;
+      frame = requestAnimationFrame(tick);
+    }
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <div
+      ref={ref}
       data-name="slider"
       className="flex gap-[80px] whitespace-nowrap font-['Waverly_CF:Extra_Bold',sans-serif] text-[#8d8e8e] text-[20px] tracking-[3px] uppercase not-italic"
     >

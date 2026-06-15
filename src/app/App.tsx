@@ -32,34 +32,7 @@ const styles = `
     font-weight: 400;
   }
 
-  /* ── Ticker animation ── */
-  @-webkit-keyframes monto-ticker-desktop {
-    from { -webkit-transform: translateX(0); transform: translateX(0); }
-    to   { -webkit-transform: translateX(calc(-100% / 14)); transform: translateX(calc(-100% / 14)); }
-  }
-  @keyframes monto-ticker-desktop {
-    from { transform: translateX(0); }
-    to   { transform: translateX(calc(-100% / 14)); }
-  }
-  @-webkit-keyframes monto-ticker-mobile {
-    from { -webkit-transform: translateX(0); transform: translateX(0); }
-    to   { -webkit-transform: translateX(calc(-100% / 8)); transform: translateX(calc(-100% / 8)); }
-  }
-  @keyframes monto-ticker-mobile {
-    from { transform: translateX(0); }
-    to   { transform: translateX(calc(-100% / 8)); }
-  }
-  [data-name="font"] [data-name="slider"] {
-    -webkit-animation: monto-ticker-desktop 22s linear infinite;
-    animation: monto-ticker-desktop 22s linear infinite;
-    will-change: transform;
-  }
-  [data-name="Font Mobile"] [data-name="slider"] {
-    -webkit-animation: monto-ticker-mobile 18s linear infinite;
-    animation: monto-ticker-mobile 18s linear infinite;
-    will-change: transform;
-  }
-  /* Use clip-path (not overflow:hidden) so iOS Safari child animations are not blocked */
+  /* Ticker clipping — clip-path does not block child animations on iOS */
   [data-name="font"],
   [data-name="Font Mobile"] {
     -webkit-clip-path: inset(0);
