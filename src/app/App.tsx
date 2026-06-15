@@ -51,11 +51,30 @@ const styles = `
     animation: monto-ticker-mobile 18s linear infinite;
     will-change: transform;
   }
-  /* Ticker strip: enforce 14px height + clip in all browsers */
+  /* Ticker strip: Chrome/Safari use text-box-trim so no override needed.
+     Firefox doesn't support text-box-trim, so we force the height there only. */
   [data-name="font"],
   [data-name="Font Mobile"] {
     overflow: hidden !important;
-    clip-path: inset(0 0 0 0) !important;
+  }
+
+  @supports (-moz-appearance: none) {
+    [data-name="font"],
+    [data-name="Font Mobile"] {
+      height: 20px !important;
+      max-height: 20px !important;
+    }
+    [data-name="slider"] {
+      line-height: 20px !important;
+      height: 20px !important;
+      overflow: hidden !important;
+      align-items: flex-start !important;
+    }
+    [data-name="slider"] p {
+      line-height: 20px !important;
+      height: 20px !important;
+      overflow: hidden !important;
+    }
   }
 `;
 
