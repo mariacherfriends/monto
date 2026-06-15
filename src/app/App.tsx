@@ -122,6 +122,47 @@ function ScaledLayout({
   );
 }
 
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setVisible(window.scrollY > 400);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      style={{
+        position: "fixed",
+        bottom: "40px",
+        right: "40px",
+        width: "48px",
+        height: "48px",
+        background: "#020a0a",
+        border: "none",
+        borderRadius: "50%",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 9999,
+        opacity: 0.8,
+      }}
+      aria-label="Back to top"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 15V3M3 9l6-6 6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
+  );
+}
+
 export default function App() {
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < MOBILE_BREAKPOINT);
   const [lang, setLang] = useState<Language>("en");
@@ -149,6 +190,7 @@ export default function App() {
           <HomeWithContent content={content} onToggle={toggle} />
         </ScaledLayout>
       )}
+      <BackToTop />
     </>
   );
 }
