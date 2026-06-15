@@ -3,12 +3,26 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
+// Stub out Figma-specific virtual modules so the build works outside Make
+const figmaStubPlugin = {
+  name: 'figma-stub',
+  resolveId(id: string) {
+    if (id === 'figma:foundry-client-api') return '\0figma-stub'
+    if (id.startsWith('figma:asset/')) return '\0figma-asset:' + id.slice('figma:asset/'.length)
+    return null
+  },
+  load(id: string) {
+    if (id === '\0figma-stub') return 'export default {}'
+    if (id.startsWith('\0figma-asset:')) return 'export default ""'
+    return null
+  },
+}
+
 export default defineConfig({
   plugins: [
-    // The React and Tailwind plugins are both required for Make, even if
-    // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    figmaStubPlugin,
   ],
   resolve: {
     alias: {
