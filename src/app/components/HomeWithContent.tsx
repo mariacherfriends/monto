@@ -6,7 +6,7 @@ import imgImg3 from "../../imports/Home/43c122a56996b25c1dc2de7820a26e197b5ec98c
 import originImg from "../../imports/origin_monto.jpg";
 import qualityImg from "../../imports/haende_monto.jpg";
 import balanceImg from "../../imports/Home/d0e3502ca8c5c6d3b36afc91a3644da3d8ad70af.png";
-import naturalImg from "../../imports/02-Monto_Flasche_Mock-up_ANSICHT_05_weiss.png";
+import naturalImg from "../../imports/natural_bottle.png";
 import { translations } from "../translations";
 
 const featureImages = [originImg, qualityImg, balanceImg];
